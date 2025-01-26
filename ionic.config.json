@@ -1,0 +1,7 @@
+{
+  "name": "SecureNotes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
