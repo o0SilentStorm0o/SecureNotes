@@ -1,13 +1,9 @@
 import { Routes } from '@angular/router';
+import { NotesPage } from './notes/notes.page';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    loadComponent: () => import('./notes/notes.page').then(m => m.NotesPage),
   },
 ];
