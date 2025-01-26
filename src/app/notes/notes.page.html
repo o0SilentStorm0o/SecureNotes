@@ -1,15 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Secure Notes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      Encryption Test
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input label="Test Input" [(ngModel)]="testInput"></ion-input>
+      </ion-item>
+      <ion-button (click)="testEncryption()">Test Encryption</ion-button>
+      <ion-textarea
+        readonly
+        label="Encrypted Result"
+        [value]="testResult"
+      ></ion-textarea>
+    </ion-card-content>
+  </ion-card>
   <ion-list>
-    <ion-item *ngFor="let note of notes" (click)="viewNote(note)">
-      <ion-label>
-        {{ note.content }}
-      </ion-label>
-    </ion-item>
   </ion-list>
 </ion-content>

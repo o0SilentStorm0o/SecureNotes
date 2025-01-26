@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({ providedIn: 'root' })
 export class NoteService {
+  private storageInitialized = false;
+  private encryptionKey = 'initial-key';
+
   constructor(private storage: Storage) {}
 
   async initStorage() {
-    await this.storage.create();
-  }
-
-  async addNote(key: string, value: string): Promise<void> {
-    await this.storage.set(key, value);
-  }
-
-  async getNotes(): Promise<{ [key: string]: any }> {
-    const keys = await this.storage.keys();
-    const notes: { [key: string]: any } = {};
-    for (const key of keys) {
-      notes[key] = await this.storage.get(key);
+    if (!this.storageInitialized) {
+      await this.storage.create();
+      this.storageInitialized = true;
     }
-    return notes;
+  }
+
+  async encrypt(content: string): Promise<string> {
+    return CryptoJS.AES.encrypt(content, this.encryptionKey).toString();
+  }
+
+  async decrypt(ciphertext: string): Promise<string> {
+    const bytes = CryptoJS.AES.decrypt(ciphertext, this.encryptionKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
   }
 }

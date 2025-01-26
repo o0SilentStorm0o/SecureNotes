@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';    // kvůli *ngFor atd.
-import { IonicModule } from '@ionic/angular';      // kvůli ion-* komponentám
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-notes',
@@ -8,16 +10,25 @@ import { IonicModule } from '@ionic/angular';      // kvůli ion-* komponentám
   styleUrls: ['./notes.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, 
-    IonicModule
-    // + případně další, které potřebujete
+    CommonModule,
+    IonicModule,
+    FormsModule
   ],
 })
 export class NotesPage {
-  notes: { id: string, content: string }[] = [];
-  
-  // Metoda, na kterou voláte (click)="viewNote(note)"
-  viewNote(note: { id: string; content: string }) {
-    console.log('Viewing note:', note);
+  testInput = '';
+  testResult = '';
+
+  constructor(private noteService: NoteService) {}
+
+  async testEncryption() {
+    try {
+      const encrypted = await this.noteService.encrypt(this.testInput);
+      const decrypted = await this.noteService.decrypt(encrypted);
+      
+      this.testResult = `Encrypted: ${encrypted}\nDecrypted: ${decrypted}`;
+    } catch (error) {
+      this.testResult = `Error: ${error instanceof Error ? error.message : error}`;
+    }
   }
 }
