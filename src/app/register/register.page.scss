@@ -1,33 +1,58 @@
-.register-content {
-    --background: #4b4a4a;
+ion-header ion-toolbar {
+  --background: #333;
+  --color: #fff;
+  ion-title {
+    font-weight: 600;
+    font-size: 1.2rem;
   }
-  
-  .form-container {
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+ion-content {
+  --background: #444;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 1rem;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+ion-item {
+  --background: #222;
+  --border-radius: 8px;
+  ion-label {
+    color: #ccc !important;
+    writing-mode: horizontal-tb !important;
+    text-align: left;
   }
-  
-  ion-card {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  
-    ion-card-header {
-      text-align: center;
-    }
+  ion-input {
+    color: #fff !important;
+    writing-mode: horizontal-tb !important;
+    text-align: left;
   }
-  
-  .register-btn {
-    margin-top: 1rem;
+}
+
+ion-button {
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+ion-button[fill="clear"] {
+  --color: #ccc;
+  &:hover {
+    --color: #fff;
   }
-  
-  ion-item {
-    --background: #fff;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-  }
-  
+}

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar class="top-toolbar">
+  <ion-toolbar color="dark">
     <ion-title>
       <ion-icon name="lock-closed" class="title-icon"></ion-icon>
       SecureNotes
@@ -8,27 +8,19 @@
 </ion-header>
 
 <ion-content class="page-content">
-
   <div class="header-box">
     <h1>Add Your Note</h1>
   </div>
 
   <div class="form-container">
-    <ion-item class="input-item">
-      <ion-label position="floating">Title</ion-label>
-      <ion-input
-        placeholder="Here write title of the note..."
-        [(ngModel)]="note.title">
-      </ion-input>
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input [(ngModel)]="note.title"></ion-input>
     </ion-item>
 
-    <ion-item class="input-item textarea-item">
-      <ion-label position="floating">Content</ion-label>
-      <ion-textarea
-        placeholder="Here write text of the note..."
-        rows="8"
-        [(ngModel)]="note.content">
-      </ion-textarea>
+    <ion-item>
+      <ion-label position="stacked">Content</ion-label>
+      <ion-textarea rows="6" [(ngModel)]="note.content"></ion-textarea>
     </ion-item>
 
     <div class="button-row">
@@ -40,11 +32,10 @@
       </ion-button>
     </div>
   </div>
-
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar class="bottom-menu">
+  <ion-toolbar color="medium">
     <ion-buttons slot="start">
       <ion-button>
         <ion-icon slot="icon-only" name="home-outline"></ion-icon>

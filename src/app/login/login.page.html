@@ -1,21 +1,22 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-      <ion-item>
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
-      </ion-item>
-      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
-      <ion-button expand="block" color="light" (click)="goToRegister()">Create Account</ion-button>
-    </form>
-  </ion-content>
-  
+  <ion-toolbar color="dark">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+    <ion-button expand="block" color="light" (click)="goToRegister()">Create Account</ion-button>
+  </form>
+</ion-content>

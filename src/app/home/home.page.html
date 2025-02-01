@@ -1,23 +1,20 @@
-<ion-header class="fade-in">
-  <ion-toolbar color="primary" class="search-toolbar">
-    <ion-title class="app-title">
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
       <ion-icon name="lock-closed" class="title-icon"></ion-icon>
-      SecureNotes
-    </ion-title>
-
+      <ion-title>SecureNotes</ion-title>
+    </ion-buttons>
     <ion-searchbar
-      animated
+      slot="end"
       placeholder="Search notes..."
-      class="custom-search"
       debounce="300"
+      class="custom-search"
       (ionInput)="searchNotes($event)">
     </ion-searchbar>
-    
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 
-<ion-content class="content-background">
-
+<ion-content class="home-content">
   <ion-refresher slot="fixed" (ionRefresh)="refreshNotes($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -29,39 +26,34 @@
   </ion-fab>
 
   <div class="notes-grid">
-    <ion-card 
-      *ngFor="let note of notes" 
+    <ion-card
+      *ngFor="let note of notes"
       class="note-card">
-      
       <div class="card-header">
         <ion-card-title class="note-title">
           {{ note.title || 'Untitled Note' }}
         </ion-card-title>
-        <ion-badge 
-          *ngIf="note.encrypted" 
-          color="success" 
+        <ion-badge
+          *ngIf="note.encrypted"
+          color="success"
           class="encrypted-badge">
           <ion-icon name="lock-closed"></ion-icon> Encrypted
         </ion-badge>
       </div>
-      
       <ion-card-content class="note-content">
         {{ note.content | truncate:100 }}
       </ion-card-content>
-
       <div class="card-footer">
         <ion-icon name="calendar-outline" class="footer-icon"></ion-icon>
         <span class="date">
           {{ note.createdAt | date:'dd.MM.yyyy, HH:mm' }}
         </span>
-      
-        <ion-button 
-          fill="clear" 
+        <ion-button
+          fill="clear"
           color="danger"
           size="small"
           (click)="deleteNote($event, note)"
           class="delete-btn">
-      
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-button>
       </div>
@@ -69,9 +61,9 @@
   </div>
 
   <div *ngIf="notes.length === 0" class="empty-state">
-    <img 
-      src="../../assets/images/empty-notes.svg" 
-      alt="No notes" 
+    <img
+      src="../../assets/images/empty-notes.svg"
+      alt="No notes"
       class="empty-image"
     >
     <h2>No Notes Found</h2>
@@ -81,5 +73,4 @@
       <ion-icon slot="end" name="add-outline"></ion-icon>
     </ion-button>
   </div>
-
 </ion-content>
