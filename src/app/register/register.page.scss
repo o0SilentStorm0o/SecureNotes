@@ -1,0 +1,33 @@
+.register-content {
+    --background: #f5f6fa; /* Světle šedé pozadí */
+  }
+  
+  .form-container {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ion-card {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  
+    ion-card-header {
+      text-align: center;
+    }
+  }
+  
+  .register-btn {
+    margin-top: 1rem;
+  }
+  
+  ion-item {
+    --background: #fff;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  

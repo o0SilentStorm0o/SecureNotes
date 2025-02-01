@@ -1,0 +1,107 @@
+/* Vhodný globální font */
+:root {
+    --ion-font-family: 'Poppins', sans-serif;
+  }
+  
+  /* ---------------------------
+     HORNÍ TOOLBAR (header)
+  --------------------------- */
+  .top-toolbar {
+    --background: #222;
+    --color: #fff;
+  
+    ion-title {
+      display: flex;
+      align-items: center;
+  
+      .logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        margin-right: 8px;
+      }
+    }
+  }
+  
+  /* ---------------------------
+     OBSAH STRÁNKY
+  --------------------------- */
+  .page-content {
+    --background: #f5f6f8; /* Jemné šedé pozadí */
+  }
+  
+  /* Box s nadpisem ("Add Your Note") */
+  .header-box {
+    text-align: center;
+    padding: 1rem 1.5rem 0.5rem; 
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #333;
+    }
+  }
+  
+  /* Kontejner okolo formuláře */
+  .form-container {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Input styl (ion-item) */
+  .input-item {
+    --background: #fff;
+    --border-radius: 8px;
+    --min-height: 60px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+    ion-label {
+      font-weight: 500;
+      color: #666;
+    }
+    ion-input, ion-textarea {
+      font-size: 1rem;
+      color: #333;
+    }
+  }
+  
+  /* Pokud chcete textarea vyšší, nastavte rows nebo CSS height */
+  .textarea-item {
+    ion-textarea {
+      min-height: 120px;
+    }
+  }
+  
+  /* Řádek s dvěma tlačítky (Save, Delete) */
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  
+    ion-button {
+      flex: 1;
+      margin: 0 0.5rem;
+    }
+    ion-button:first-child {
+      margin-left: 0;
+    }
+    ion-button:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  /* ---------------------------
+     SPODNÍ MENU (footer)
+  --------------------------- */
+  .bottom-menu {
+    --background: #ddd;
+  
+    ion-buttons {
+      ion-button {
+        color: #444;
+        /* Nebo i fill="clear" a ikona jen tak? Je to na preferenci designu. */
+      }
+    }
+  }
+  

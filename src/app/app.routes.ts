@@ -1,9 +1,28 @@
 import { Routes } from '@angular/router';
-import { NotesPage } from './notes/notes.page';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./notes/notes.page').then(m => m.NotesPage),
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./register/register.page').then(m => m.RegisterPage)
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-note',
+    loadComponent: () => import('./add-note/add-note.page').then(m => m.AddNotePage),
+    canActivate: [AuthGuard]
+  }
 ];

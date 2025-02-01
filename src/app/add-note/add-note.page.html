@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar class="top-toolbar">
+    <ion-title>
+      <ion-icon name="lock-closed" class="title-icon"></ion-icon>
+      SecureNotes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content">
+
+  <!-- Horní box s nadpisem (Add your note) -->
+  <div class="header-box">
+    <h1>Add Your Note</h1>
+  </div>
+
+  <!-- Kontejner pro formulářové prvky a tlačítka -->
+  <div class="form-container">
+    <!-- Text input pro titul poznámky -->
+    <ion-item class="input-item">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input
+        placeholder="Here write title of the note..."
+        [(ngModel)]="note.title">
+      </ion-input>
+    </ion-item>
+
+    <!-- Text area pro obsah poznámky -->
+    <ion-item class="input-item textarea-item">
+      <ion-label position="floating">Content</ion-label>
+      <ion-textarea
+        placeholder="Here write text of the note..."
+        rows="8"
+        [(ngModel)]="note.content">
+      </ion-textarea>
+    </ion-item>
+
+    <!-- Dvě tlačítka pod sebou nebo vedle sebe (dle stylů) -->
+    <div class="button-row">
+      <ion-button color="primary" (click)="save()">
+        Save Note
+      </ion-button>
+      <ion-button color="danger" (click)="clearForm()">
+        Delete content
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>
+
+<!-- Spodní menu s ikonkami (např. 4 stránky) -->
+<ion-footer>
+  <ion-toolbar class="bottom-menu">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="list-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

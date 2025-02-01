@@ -1,12 +1,112 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import {
+  lockClosed,
+  notificationsOutline,
+  personCircleOutline,
+  addOutline,
+  calendarOutline,
+  trashOutline,
+} from 'ionicons/icons';
+import { TruncatePipe } from '../pipes/truncate.pipe';
+import { NoteService } from '../services/note.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+
+// Register icons
+addIcons({
+  'lock-closed': lockClosed,
+  'notifications-outline': notificationsOutline,
+  'person-circle-outline': personCircleOutline,
+  'add-outline': addOutline,
+  'calendar-outline': calendarOutline,
+  'trash-outline': trashOutline,
+});
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  standalone: true,
+  imports: [CommonModule, IonicModule, TruncatePipe],
 })
 export class HomePage {
-  constructor() {}
+  notes: any[] = [];
+  isLoading = true;
+  errorMessage?: string;
+  private allNotes: any[] = [];
+
+  constructor(
+    private noteService: NoteService,
+    private authService: AuthService, 
+    private router: Router
+  ) {}
+
+  async ngOnInit() {
+    await this.loadNotes();
+  }
+
+  // Load notes from NoteService (integrated with Firebase)
+  private async loadNotes() {
+    const userId = this.authService.getUserId();
+  
+    if (!userId) {
+      this.errorMessage = 'Uživatel není přihlášen';
+      this.isLoading = false;
+      return;
+    }
+
+    try {
+      this.isLoading = true;
+      this.errorMessage = undefined;
+
+      const notes = await this.noteService.getAllNotes(userId); // Fetch notes from Firebase
+      this.allNotes = notes;
+      this.notes = [...this.allNotes];
+
+      if (this.notes.length === 0) {
+        this.errorMessage = 'No notes found. Create your first note!';
+      }
+    } catch (error) {
+      console.error('Error loading notes:', error);
+      this.errorMessage = 'Failed to load notes. Please try again.';
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  // Search functionality to filter notes
+  searchNotes(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.notes = this.allNotes.filter((note) => {
+      const titleMatch = note.title?.toLowerCase().includes(query);
+      const contentMatch = note.content?.toLowerCase().includes(query);
+      return titleMatch || contentMatch;
+    });
+  }
+
+  // Navigate to Add Note page
+  async createNewNote() {
+    await this.router.navigate(['/add-note']);
+  }
+
+  // Refresh notes (pull-to-refresh)
+  async refreshNotes(event: any) {
+    await this.loadNotes();
+    event.target.complete();
+  }
+
+  // Delete a note and sync with Firebase
+  async deleteNote(event: Event, note: any) {
+    event.stopPropagation();
+
+    try {
+      await this.noteService.deleteNote(note.id); // Deletes from both local storage and Firebase
+      await this.loadNotes();
+    } catch (error) {
+      console.error('Error deleting note:', error);
+    }
+  }
 }

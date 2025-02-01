@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="register-content">
+    <div class="form-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Create an Account</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <form #form="ngForm">
+            <!-- Uživatelské jméno -->
+            <ion-item>
+              <ion-label position="stacked">Username</ion-label>
+              <ion-input
+                name="username"
+                type="text"
+                [(ngModel)]="username"
+                required
+              ></ion-input>
+            </ion-item>
+  
+            <!-- Heslo -->
+            <ion-item>
+              <ion-label position="stacked">Password</ion-label>
+              <ion-input
+                name="password"
+                type="password"
+                [(ngModel)]="password"
+                required
+              ></ion-input>
+            </ion-item>
+  
+            <!-- Tlačítko registrace -->
+            <ion-button
+              expand="block"
+              color="primary"
+              [disabled]="!form.valid"
+              (click)="onRegister()"
+              class="register-btn"
+            >
+              Register
+            </ion-button>
+  
+            <!-- Chybová hláška, pokud existuje -->
+            <ion-text color="danger" *ngIf="errorMessage">
+              <p>{{ errorMessage }}</p>
+            </ion-text>
+  
+            <!-- Tlačítko zrušit (zpět) -->
+            <ion-button
+              expand="block"
+              fill="clear"
+              (click)="goBack()"
+            >
+              Cancel
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+  
