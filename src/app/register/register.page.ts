@@ -41,7 +41,6 @@ export class RegisterPage {
   }
 
   goBack() {
-    // Přejít zpět, typicky /login
     this.router.navigate(['/login']);
   }
 }

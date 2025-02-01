@@ -1,4 +1,3 @@
-/* Global Styles */
 ion-toolbar {
   --background: linear-gradient(135deg, #4CAF50, #8BC34A);
   --color: white;
@@ -38,7 +37,7 @@ ion-toolbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.8); /* poloprůhledné pozadí */
+  background: rgba(255, 255, 255, 0.8);
   z-index: 10;
 }
 
@@ -52,7 +51,7 @@ ion-toolbar {
   --background: #f0f4f8;
 }
 
-/* Notes Grid */
+
 .notes-grid {
   display: grid;
   gap: 20px;
@@ -127,13 +126,13 @@ ion-toolbar {
   }
 }
 
-/* FAB Button */
+
 .fab-button {
   --background: #4CAF50;
   --box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
 }
 
-/* Empty State */
+
 .empty-state {
   text-align: center;
   padding: 40px 16px;

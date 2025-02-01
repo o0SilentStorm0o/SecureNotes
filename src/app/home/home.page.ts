@@ -15,7 +15,6 @@ import { NoteService } from '../services/note.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-// Register icons
 addIcons({
   'lock-closed': lockClosed,
   'notifications-outline': notificationsOutline,
@@ -48,7 +47,6 @@ export class HomePage {
     await this.loadNotes();
   }
 
-  // Load notes from NoteService (integrated with Firebase)
   private async loadNotes() {
     const userId = this.authService.getUserId();
   
@@ -62,7 +60,7 @@ export class HomePage {
       this.isLoading = true;
       this.errorMessage = undefined;
 
-      const notes = await this.noteService.getAllNotes(userId); // Fetch notes from Firebase
+      const notes = await this.noteService.getAllNotes(userId);
       this.allNotes = notes;
       this.notes = [...this.allNotes];
 
@@ -77,7 +75,6 @@ export class HomePage {
     }
   }
 
-  // Search functionality to filter notes
   searchNotes(event: any) {
     const query = event.target.value.toLowerCase();
     this.notes = this.allNotes.filter((note) => {
@@ -87,23 +84,20 @@ export class HomePage {
     });
   }
 
-  // Navigate to Add Note page
   async createNewNote() {
     await this.router.navigate(['/add-note']);
   }
 
-  // Refresh notes (pull-to-refresh)
   async refreshNotes(event: any) {
     await this.loadNotes();
     event.target.complete();
   }
 
-  // Delete a note and sync with Firebase
   async deleteNote(event: Event, note: any) {
     event.stopPropagation();
 
     try {
-      await this.noteService.deleteNote(note.id); // Deletes from both local storage and Firebase
+      await this.noteService.deleteNote(note.id);
       await this.loadNotes();
     } catch (error) {
       console.error('Error deleting note:', error);

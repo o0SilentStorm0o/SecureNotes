@@ -1,12 +1,10 @@
 <ion-header class="fade-in">
   <ion-toolbar color="primary" class="search-toolbar">
-    <!-- Ikona zámku + text SecureNotes -->
     <ion-title class="app-title">
       <ion-icon name="lock-closed" class="title-icon"></ion-icon>
       SecureNotes
     </ion-title>
 
-    <!-- Vyhledávací pole přímo uvnitř toolbaru -->
     <ion-searchbar
       animated
       placeholder="Search notes..."
@@ -20,19 +18,16 @@
 
 <ion-content class="content-background">
 
-  <!-- Pull-to-refresh -->
   <ion-refresher slot="fixed" (ionRefresh)="refreshNotes($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <!-- Floating Action Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button class="fab-button" (click)="createNewNote()">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <!-- Notes Grid -->
   <div class="notes-grid">
     <ion-card 
       *ngFor="let note of notes" 
@@ -60,7 +55,6 @@
           {{ note.createdAt | date:'dd.MM.yyyy, HH:mm' }}
         </span>
       
-        <!-- Tlačítko pro odstranění poznámky -->
         <ion-button 
           fill="clear" 
           color="danger"
@@ -74,7 +68,6 @@
     </ion-card>
   </div>
 
-  <!-- Empty State -->
   <div *ngIf="notes.length === 0" class="empty-state">
     <img 
       src="../../assets/images/empty-notes.svg" 

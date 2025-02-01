@@ -9,14 +9,11 @@
 
 <ion-content class="page-content">
 
-  <!-- Horní box s nadpisem (Add your note) -->
   <div class="header-box">
     <h1>Add Your Note</h1>
   </div>
 
-  <!-- Kontejner pro formulářové prvky a tlačítka -->
   <div class="form-container">
-    <!-- Text input pro titul poznámky -->
     <ion-item class="input-item">
       <ion-label position="floating">Title</ion-label>
       <ion-input
@@ -25,7 +22,6 @@
       </ion-input>
     </ion-item>
 
-    <!-- Text area pro obsah poznámky -->
     <ion-item class="input-item textarea-item">
       <ion-label position="floating">Content</ion-label>
       <ion-textarea
@@ -35,7 +31,6 @@
       </ion-textarea>
     </ion-item>
 
-    <!-- Dvě tlačítka pod sebou nebo vedle sebe (dle stylů) -->
     <div class="button-row">
       <ion-button color="primary" (click)="save()">
         Save Note
@@ -48,7 +43,6 @@
 
 </ion-content>
 
-<!-- Spodní menu s ikonkami (např. 4 stránky) -->
 <ion-footer>
   <ion-toolbar class="bottom-menu">
     <ion-buttons slot="start">
