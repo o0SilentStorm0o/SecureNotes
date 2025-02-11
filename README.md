@@ -211,6 +211,3 @@ This project is provided as-is for demonstration or educational use. You may ada
 
 **Happy Coding!**  
 Feel free to open issues or contribute suggestions if you have any ideas for improvement.
-```
-
-Hodně zdaru, Davide! Pokud budeš mít jakékoli další otázky nebo potřebuješ upřesnit detaily, neváhej se ozvat.
