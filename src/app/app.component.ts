@@ -1,19 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { IonApp, IonRouterOutlet, IonInput } from '@ionic/angular/standalone';
-import { NoteService } from './services/note.service';
+/**
+ * @file app.component.ts
+ * @brief The root component of the SecureNotes application, setting up the Ionic shell.
+ */
 
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+
+/**
+ * @class AppComponent
+ * @brief Main application component that wraps the Ionic router outlet.
+ */
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonInput],
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [IonicModule, RouterModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppComponent implements OnInit {
-  constructor(private noteService: NoteService) {}
-
-  async ngOnInit() {
-    try {
-    } catch (error) {
-      console.error('Fatal storage error:', error);
-    }
-  }
+export class AppComponent {
+  /**
+   * @brief Constructor of the AppComponent.
+   */
+  constructor() {}
 }
