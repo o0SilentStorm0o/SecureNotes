@@ -4,8 +4,14 @@
       <ion-icon name="lock-closed" class="title-icon"></ion-icon>
       <ion-title>SecureNotes</ion-title>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-searchbar
-      slot="end"
       placeholder="Search notes..."
       debounce="300"
       class="custom-search"
@@ -26,17 +32,12 @@
   </ion-fab>
 
   <div class="notes-grid">
-    <ion-card
-      *ngFor="let note of notes"
-      class="note-card">
+    <ion-card *ngFor="let note of notes" class="note-card">
       <div class="card-header">
         <ion-card-title class="note-title">
           {{ note.title || 'Untitled Note' }}
         </ion-card-title>
-        <ion-badge
-          *ngIf="note.encrypted"
-          color="success"
-          class="encrypted-badge">
+        <ion-badge *ngIf="note.encrypted" color="success" class="encrypted-badge">
           <ion-icon name="lock-closed"></ion-icon> Encrypted
         </ion-badge>
       </div>
@@ -48,12 +49,7 @@
         <span class="date">
           {{ note.createdAt | date:'dd.MM.yyyy, HH:mm' }}
         </span>
-        <ion-button
-          fill="clear"
-          color="danger"
-          size="small"
-          (click)="deleteNote($event, note)"
-          class="delete-btn">
+        <ion-button fill="clear" color="danger" size="small" (click)="deleteNote($event, note)" class="delete-btn">
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-button>
       </div>
@@ -61,11 +57,7 @@
   </div>
 
   <div *ngIf="notes.length === 0" class="empty-state">
-    <img
-      src="../../assets/images/empty-notes.svg"
-      alt="No notes"
-      class="empty-image"
-    >
+    <img src="../../assets/images/empty-notes.svg" alt="No notes" class="empty-image">
     <h2>No Notes Found</h2>
     <p>Start by creating your first secure note</p>
     <ion-button shape="round" (click)="createNewNote()">

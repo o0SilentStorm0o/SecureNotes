@@ -6,10 +6,11 @@ ion-toolbar {
   align-items: center;
 }
 
-ion-buttons[slot="start"] {
+ion-buttons[slot="start"],
+ion-buttons[slot="end"] {
   display: flex;
   align-items: center;
-  margin-left: 8px;
+  margin: 0 8px;
 }
 
 .title-icon {
@@ -21,6 +22,11 @@ ion-buttons[slot="start"] {
 ion-title {
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
+}
+
+ion-button[fill="clear"] ion-icon {
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 .custom-search {

@@ -1,3 +1,10 @@
+/**
+ * @file app.config.ts
+ * @brief Contains configuration settings for the SecureNotes application.
+ *
+ * This file exports configuration objects such as Firebase configuration, API endpoints, etc.
+ */
+
 export const firebaseConfig = {
     apiKey: "AIzaSyDMQuIQSTlMy6DNbb8I05kFT1YaBDw9x6Q",
     authDomain: "notes-4bc97.firebaseapp.com",

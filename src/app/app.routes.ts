@@ -1,6 +1,15 @@
+/**
+ * @file app.routes.ts
+ * @brief Defines the application routes for SecureNotes.
+ */
+
 import { Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 
+/**
+ * @const routes
+ * @brief The route configuration used by the router for lazy-loaded pages.
+ */
 export const routes: Routes = [
   {
     path: '',
