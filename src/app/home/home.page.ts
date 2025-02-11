@@ -81,7 +81,6 @@ export class HomePage {
    */
   async ngOnInit() {
     await this.loadNotes();
-    console.log('HomePage constructor/OnInit called');
   }
 
   /**

@@ -1,54 +1,44 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>
-      <ion-icon name="lock-closed" class="title-icon"></ion-icon>
-      SecureNotes
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="cancel()">
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Note</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="page-content">
-  <div class="header-box">
-    <h1>Add Your Note</h1>
-  </div>
+<ion-content class="add-note-content">
+  <div class="note-form-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Create a Secure Note</ion-card-subtitle>
+        <ion-card-title>Add Details</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input [(ngModel)]="note.title"></ion-input>
+        </ion-item>
 
-  <div class="form-container">
-    <ion-item>
-      <ion-label position="stacked">Title</ion-label>
-      <ion-input [(ngModel)]="note.title"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Content</ion-label>
-      <ion-textarea rows="6" [(ngModel)]="note.content"></ion-textarea>
-    </ion-item>
-
-    <div class="button-row">
-      <ion-button color="primary" (click)="save()">
-        Save Note
-      </ion-button>
-      <ion-button color="danger" (click)="clearForm()">
-        Delete content
-      </ion-button>
-    </div>
+        <ion-item>
+          <ion-label position="stacked">Content</ion-label>
+          <ion-textarea rows="6" [(ngModel)]="note.content"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button color="primary" (click)="save()">
+              Save Note
+            </ion-button>
+            <ion-button color="medium" (click)="clearForm()">
+              Clear
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-card>
   </div>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar color="medium">
-    <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="list-outline"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
