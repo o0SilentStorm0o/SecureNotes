@@ -4,6 +4,16 @@ SecureNotes is a hybrid Ionic/Angular application for creating and managing encr
 
 ---
 
+## Dokumentace v češtině
+
+Pro českou dokumentaci a kompletní analýzu aplikace si přečtěte:
+
+- 📋 **[PŘEHLED_APLIKACE.md](./PŘEHLED_APLIKACE.md)** - Rychlý přehled funkcí a technologií
+- 📊 **[ANALÝZA_APLIKACE.md](./ANALÝZA_APLIKACE.md)** - Kompletní analýza aplikace a jejího účelu
+- 🔧 **[TECHNICKÁ_DOKUMENTACE.md](./TECHNICKÁ_DOKUMENTACE.md)** - Detailní technická dokumentace
+
+---
+
 ## Table of Contents
 1. [Key Features](#key-features)  
 2. [Tech Stack](#tech-stack)  
